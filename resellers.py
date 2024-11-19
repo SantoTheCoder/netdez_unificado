@@ -1,6 +1,6 @@
-#RESELLERS.PY
+# RESELLERS.PY
 import logging
-from config import IOS_API_KEY, DEFAULT_RESELLER_LIMIT, ADMIN_ID, API_KEY, TELEGRAM_CHAT_ID, URL_RESELLERS, SUPPORT_CONTACT
+from config import IOS_API_KEY, DEFAULT_RESELLER_LIMIT, ADMIN_ID, API_KEY, TELEGRAM_CHAT_ID, URL_RESELLERS, SUPPORT_CONTACT, ANDROID_APP_LINK, IOS_APP_LINK
 from utils import make_request, generate_random_string
 from telegram import Update
 from telegram.ext import ContextTypes
@@ -58,18 +58,34 @@ def create_reseller(limit=DEFAULT_RESELLER_LIMIT, username=None, password=None, 
 
     if 'error' not in result:
         success_message = (
-            "<b>🎉 Revendedor Criado 🎉</b>\n\n"
-            "<b>🔎 Usuário:</b>\n"
-            f"<code>{username}</code>\n\n"
-            "<b>🔑 Senha:</b>\n"
-            f"<code>{password}</code>\n\n"
-            "<b>🏆 Validade:</b>\n"
-            "30 dias\n\n"
-            "<b>🕟 Limite:</b>\n"
-            f"{limit}\n\n"
-            "💥 Obrigado por usar nossos serviços!\n\n"
-            f"🔗 <a href=\"{URL_RESELLERS}\">Link do Painel (Clique Aqui)</a>\n\n"
-            f"Suporte: {SUPPORT_CONTACT}"
+            "<b>🎉✨ Revendedor Criado com Sucesso! Bem-vindo à Família! 🎉✨</b>\n\n"
+            f"🔎 <b>Usuário:</b> <code>{username}</code>\n"
+            f"🔑 <b>Senha:</b> <code>{password}</code>\n"
+            f"🏆 <b>Validade:</b> <code>30 dias</code>\n"
+            f"🕟 <b>Limite de Conexões:</b> <code>{limit}</code>\n\n"
+            "🌟 <b>Obrigado por confiar em nossos serviços! Estamos aqui para você!</b>\n\n"
+            f"🔗 <b>Painel de Acesso:</b> <a href=\"{URL_RESELLERS}\">Clique Aqui</a>\n"
+            f"📞 <b>Suporte:</b> {SUPPORT_CONTACT}\n\n"
+            "---\n\n"
+            "<b>📱 Aplicativos e Arquivos de Configuração:</b>\n"
+            f"- 📱 <b>Android:</b> <a href=\"{ANDROID_APP_LINK}\">Baixe Aqui</a>\n"
+            f"- 🍎 <b>iOS:</b> <a href=\"{IOS_APP_LINK}\">Baixe Aqui</a>\n\n"
+            "---\n\n"
+            "<b>🛠️ Material de Apoio:</b>\n"
+            "🖼️ <b>Material Publicitário:</b> @BANNERS_NET_ILIMITADA\n"
+            "🎥 <b>Vídeos de Suporte:</b> @Kriasys_Autorizado >> Opção 5 (Auto Suporte Inteligente)\n\n"
+            "---\n\n"
+            "<b>💡 Dica Importante:</b>\n"
+            "⚙️ <b>Acesse o Painel e configure sua conta de recebimento automático.</b>\n\n"
+            "📌 <b>Com isso, seus clientes poderão:</b>\n"
+            "- 🛒 Comprar <b>planos e revendas</b>;\n"
+            "- 🚀 Criar <b>testes automáticos</b>;\n"
+            "- 🔄 Efetuar <b>renovações automáticas</b>.\n\n"
+            "🔒 <b>Eles pagam direto na sua conta, com total segurança e rapidez!</b>\n\n"
+            "---\n\n"
+            "❓ <b>Dúvidas?</b>\n"
+            "📲 Fale com nosso suporte e tire todas as suas dúvidas! Estamos aqui para ajudar!\n\n"
+            "🚀 <b>Conte conosco para alavancar seu negócio!</b>"
         )
 
         # Notifica ao canal apenas se `notify` for True
