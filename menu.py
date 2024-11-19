@@ -14,10 +14,13 @@ logger = logging.getLogger(__name__)
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logger.info("Exibindo o menu principal")
 
-    # Mensagem de boas-vindas atualizada
+    # Mensagem de boas-vindas com tema futurista
     message = (
         "✨ <b>Bem-vindo ao NetDez!</b> 🚀\n\n"
-        "🌐 Internet Ilimitada com qualidade. Escolha uma opção abaixo para começar:"
+        "🌐 <b>Internet Ilimitada</b> para <b>Android & iOS</b> 📱💻\n\n"
+        "⚡ <b>Ultra Velocidade</b> | <b>Conexão Ininterrupta</b>\n"
+        "🔒 <b>Segurança Avançada</b> | <b>Suporte 24/7</b>\n\n"
+        "🚀 Escolha sua opção:"
     )
 
     # Botões do menu principal organizados de forma mais estética
@@ -63,11 +66,16 @@ async def comprar_ios_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Mensagem persuasiva com formatação aprimorada
     message = (
-        "<b>🔍 Escolha o Melhor Plano para Você e Navegue Ilimitado:</b>\n"
-        "Selecione um dos planos abaixo:"
+        "<b>🔍 Escolha seu Plano:</b>\n"
+        "📱 <b>Compatível com Android & iOS</b>\n\n"
+        "✨ <b>Benefícios:</b>\n"
+        "• ⚡ Ultra Velocidade\n"
+        "• 🔒 Segurança Total\n"
+        "• 🛠️ Fácil de Usar\n\n"
+        "🚀 Inicie sua conexão ilimitada:"
     )
 
-    # Botões dos planos de usuários organizados em colunas para melhor visualização
+    # Botões dos planos de usuários organizados em duas colunas para melhor visualização
     keyboard = [
         [
             InlineKeyboardButton("👤 1 Usuário - 15 Dias", callback_data='usuario_1_15'),
@@ -115,8 +123,10 @@ async def revenda_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Mensagem promocional com destaques
     message = (
-        "<b>📈 Invista na Revenda e Aumente seus Lucros com NetDez:</b>\n"
-        "Escolha um dos planos de revenda abaixo:"
+        "<b>📈 Amplie seus Lucros:</b>\n\n"
+        "🔹 <b>Oportunidade Única</b> | <b>Ferramentas Avançadas</b>\n"
+        "🔹 <b>Painel Completo</b> | <b>Suporte Dedicado</b>\n\n"
+        "🚀 Escolha seu plano de revenda:"
     )
 
     # Botões dos planos de revenda organizados em duas colunas para clareza
@@ -167,7 +177,8 @@ async def faq_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     message = (
         "<b>❓ Dúvidas Frequentes</b>\n\n"
-        "Por favor, selecione a plataforma para visualizar o FAQ correspondente:"
+        "Estamos aqui para ajudar! 🤖💬\n\n"
+        "Selecione a plataforma para mais informações:"
     )
 
     # Botões para seleção de FAQ organizados de forma equilibrada
