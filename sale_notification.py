@@ -58,12 +58,12 @@ USER_PLANS = [
 
 # Lista de planos de revenda com probabilidades
 RESELLER_PLANS = [
-    {"name": "Revenda Start - 10 Pessoas", "price": 40.0, "validity_days": 30, "user_limit": 10, "probability": 60},
-    {"name": "Revenda Básica - 20 Pessoas", "price": 70.0, "validity_days": 30, "user_limit": 20, "probability": 20},
-    {"name": "Revenda Intermediária - 50 Pessoas", "price": 120.0, "validity_days": 30, "user_limit": 50, "probability": 13},
-    {"name": "Revenda Avançada - 100 Pessoas", "price": 180.0, "validity_days": 30, "user_limit": 100, "probability": 5},
-    {"name": "Revenda Premium - 150 Pessoas", "price": 240.0, "validity_days": 30, "user_limit": 150, "probability": 1},
-    {"name": "Revenda Elite - 200 Pessoas", "price": 300.0, "validity_days": 30, "user_limit": 200, "probability": 1},
+    {"name": "Revenda Start - 10 Pessoas", "price": 30.0, "validity_days": 30, "user_limit": 10, "probability": 60},
+    {"name": "Revenda Básica - 20 Pessoas", "price": 52.5, "validity_days": 30, "user_limit": 20, "probability": 20},
+    {"name": "Revenda Intermediária - 50 Pessoas", "price": 90.0, "validity_days": 30, "user_limit": 50, "probability": 13},
+    {"name": "Revenda Avançada - 100 Pessoas", "price": 135.0, "validity_days": 30, "user_limit": 100, "probability": 5},
+    {"name": "Revenda Premium - 150 Pessoas", "price": 180.0, "validity_days": 30, "user_limit": 150, "probability": 1},
+    {"name": "Revenda Elite - 200 Pessoas", "price": 225.0, "validity_days": 30, "user_limit": 200, "probability": 1},
 ]
 
 # Função para obter ID e nome do cliente dos arquivos (apenas para simulação)

@@ -107,42 +107,42 @@ planos = {
     },
     'revenda_start': {
         'nome': 'Revenda Start - 10 Pessoas',
-        'preco': 40.00,
+        'preco': 30.00,  # Atualizado de 40.00 para 30.00
         'tipo': 'revenda',
         'limite': 10,
         'validade_dias': 30
     },
     'revenda_basica': {
         'nome': 'Revenda Básica - 20 Pessoas',
-        'preco': 70.00,
+        'preco': 52.50,  # Atualizado de 70.00 para 52.50
         'tipo': 'revenda',
         'limite': 20,
         'validade_dias': 30
     },
     'revenda_intermediaria': {
         'nome': 'Revenda Intermediária - 50 Pessoas',
-        'preco': 120.00,
+        'preco': 90.00,  # Atualizado de 120.00 para 90.00
         'tipo': 'revenda',
         'limite': 50,
         'validade_dias': 30
     },
     'revenda_avancada': {
         'nome': 'Revenda Avançada - 100 Pessoas',
-        'preco': 180.00,
+        'preco': 135.00,  # Atualizado de 180.00 para 135.00
         'tipo': 'revenda',
         'limite': 100,
         'validade_dias': 30
     },
     'revenda_premium': {
         'nome': 'Revenda Premium - 150 Pessoas',
-        'preco': 240.00,
+        'preco': 180.00,  # Atualizado de 240.00 para 180.00
         'tipo': 'revenda',
         'limite': 150,
         'validade_dias': 30
     },
     'revenda_elite': {
         'nome': 'Revenda Elite - 200 Pessoas',
-        'preco': 300.00,
+        'preco': 225.00,  # Atualizado de 300.00 para 225.00
         'tipo': 'revenda',
         'limite': 200,
         'validade_dias': 30

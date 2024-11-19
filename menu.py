@@ -23,8 +23,8 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Botões do menu principal organizados conforme a descrição
     keyboard = [
         [
-            InlineKeyboardButton("🚀 Internet Ilimitada", callback_data='comprar_ios'),
-            InlineKeyboardButton("🍏 iOS Ilimitado", url='https://t.me/netdez_ios_bot')
+            InlineKeyboardButton("🚀 Internet Ilimitada iOS & Android", callback_data='comprar_ios')
+            # Removed the "🍏 iOS Ilimitado" button as per the request
         ],
         [
             InlineKeyboardButton("💰 Seja um Revendedor", callback_data='revenda_menu'),
@@ -100,12 +100,12 @@ async def revenda_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Botões dos novos planos de revenda
     keyboard = [
-        [InlineKeyboardButton("💼 Revenda Start - 10 Clientes - R$40,00", callback_data='revenda_start')],
-        [InlineKeyboardButton("💼 Revenda Básica - 20 Clientes - R$70,00", callback_data='revenda_basica')],
-        [InlineKeyboardButton("💼 Revenda Intermediária - 50 Clientes - R$120,00", callback_data='revenda_intermediaria')],
-        [InlineKeyboardButton("💼 Revenda Avançada - 100 Clientes - R$180,00", callback_data='revenda_avancada')],
-        [InlineKeyboardButton("💼 Revenda Premium - 150 Clientes - R$240,00", callback_data='revenda_premium')],
-        [InlineKeyboardButton("💼 Revenda Elite - 200 Clientes - R$300,00", callback_data='revenda_elite')],
+        [InlineKeyboardButton("💼 Revenda Start - 10 Clientes - R$30,00", callback_data='revenda_start')],
+        [InlineKeyboardButton("💼 Revenda Básica - 20 Clientes - R$52,50", callback_data='revenda_basica')],
+        [InlineKeyboardButton("💼 Revenda Intermediária - 50 Clientes - R$90,00", callback_data='revenda_intermediaria')],
+        [InlineKeyboardButton("💼 Revenda Avançada - 100 Clientes - R$135,00", callback_data='revenda_avancada')],
+        [InlineKeyboardButton("💼 Revenda Premium - 150 Clientes - R$180,00", callback_data='revenda_premium')],
+        [InlineKeyboardButton("💼 Revenda Elite - 200 Clientes - R$225,00", callback_data='revenda_elite')],
         [InlineKeyboardButton("📦 Materiais de Venda", url='https://t.me/BANNERS_NET_ILIMITADA')],
         [InlineKeyboardButton("⬅️ Voltar ao Menu Principal", callback_data='start')]
     ]
