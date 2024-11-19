@@ -1,10 +1,12 @@
 # sales.py
+from telegram import Update
+from telegram.ext import ContextTypes
 import logging
 from datetime import datetime, timedelta
 from utils import make_request, generate_random_string
 from config import (
     IOS_API_KEY, IOS_APP_LINK, CONFIG_FILES_LINK, 
-    ANDROID_APP_LINK, RENEWAL_LINK
+    ANDROID_APP_LINK, RENEWAL_LINK, CHANNEL_ID, APP_MESSAGE_ID
 )
 
 logger = logging.getLogger(__name__)
@@ -73,3 +75,54 @@ def get_user_plan_price(user_limit, validity_days):
     else:
         logger.error(f"Plano não encontrado para {user_limit} logins e {validity_days} dias")
         return None
+
+# Função de comando do Telegram para criar um usuário para venda com planos variáveis
+async def create_user_for_sale_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_id = str(update.effective_user.id)
+    logger.info(f"Comando /createsale recebido de {user_id}")
+    if user_id != ADMIN_ID:
+        await update.message.reply_text("Você não tem permissão para usar este comando.")
+        return
+
+    args = context.args
+    if len(args) >= 2:
+        try:
+            user_limit = int(args[0])
+            validity_days = int(args[1])
+        except ValueError:
+            await update.message.reply_text("Uso inválido. Exemplo: /createsale 2 30")
+            return
+    else:
+        user_limit = DEFAULT_USER_LIMIT
+        validity_days = DEFAULT_VALIDITY_DAYS
+
+    plan_price = get_user_plan_price(user_limit, validity_days)
+    if plan_price is None:
+        await update.message.reply_text("Plano não encontrado. Por favor, verifique o limite de logins e dias.")
+        return
+
+    username, user_message = create_user_for_sale(validity_days=validity_days, user_limit=user_limit)
+    if username:
+        # Envia a mensagem inicial com o usuário e senha
+        await update.message.reply_text(user_message, parse_mode="HTML", disable_web_page_preview=True)
+        
+        # Mensagem adicional informativa
+        additional_message = "<i>Você pode copiar o usuário ou a senha clicando em cima deles.</i>"
+        await update.message.reply_text(additional_message, parse_mode="HTML")
+        
+        # Encaminha a mensagem do aplicativo
+        await context.bot.forward_message(
+            chat_id=update.effective_chat.id,
+            from_chat_id=CHANNEL_ID,
+            message_id=APP_MESSAGE_ID
+        )
+
+        # Mensagem final de suporte
+        support_message = (
+            "❓ <b>Ajuda Rápida:</b>\n\n"
+            "Nosso bot envia vídeos tutoriais 📽 e guias 📜. Basta ir no Menu >> Dúvidas. "
+            "Caso necessite, chame nosso suporte 24 horas. @Pedrooo"
+        )
+        await update.message.reply_text(support_message, parse_mode="HTML")
+    else:
+        await update.message.reply_text(user_message, parse_mode="HTML")

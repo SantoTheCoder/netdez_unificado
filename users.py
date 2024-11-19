@@ -3,10 +3,10 @@ import logging
 from datetime import datetime, timedelta
 from config import (
     DEFAULT_VALIDITY_DAYS, DEFAULT_USER_LIMIT, IOS_API_KEY, ADMIN_ID, 
-    IOS_APP_LINK, CONFIG_FILES_LINK, ANDROID_APP_LINK, RENEWAL_LINK
+    IOS_APP_LINK, CONFIG_FILES_LINK, ANDROID_APP_LINK, RENEWAL_LINK, CHANNEL_ID, APP_MESSAGE_ID
 )
 from utils import make_request, generate_random_string
-from telegram import Update
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes
 
 logger = logging.getLogger(__name__)
@@ -70,11 +70,11 @@ def create_user(validity_days=DEFAULT_VALIDITY_DAYS, user_limit=DEFAULT_USER_LIM
             IOS_APP_LINK=IOS_APP_LINK,
             RENEWAL_LINK=RENEWAL_LINK
         )
-        logger.info(f'Usuário {username} criado com sucesso.')
+        logger.info(f"Usuário {username} criado com sucesso.")
         return username, user_message
     else:
-        logger.error(f'Erro ao criar o usuário {username}: {result}')
-        return None, f"Erro ao criar usuário: {result}"
+        logger.error(f"Erro ao criar o usuário {username}: {result}")
+        return None, "Erro ao criar o usuário. Por favor, verifique manualmente."
 
 # Função de comando do Telegram para criar um usuário com planos variáveis
 async def create_user_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -102,7 +102,30 @@ async def create_user_command(update: Update, context: ContextTypes.DEFAULT_TYPE
         return
 
     username, user_message = create_user(validity_days=validity_days, user_limit=user_limit)
-    await update.message.reply_text(user_message, parse_mode="HTML", disable_web_page_preview=True)
+    if username:
+        # Envia a mensagem inicial com o usuário e senha
+        await update.message.reply_text(user_message, parse_mode="HTML", disable_web_page_preview=True)
+        
+        # Mensagem adicional informativa
+        additional_message = "<i>Você pode copiar o usuário ou a senha clicando em cima deles.</i>"
+        await update.message.reply_text(additional_message, parse_mode="HTML")
+        
+        # Encaminha a mensagem do aplicativo
+        await context.bot.forward_message(
+            chat_id=update.effective_chat.id,
+            from_chat_id=CHANNEL_ID,
+            message_id=APP_MESSAGE_ID
+        )
+
+        # Mensagem final de suporte
+        support_message = (
+            "❓ <b>Ajuda Rápida:</b>\n\n"
+            "Nosso bot envia vídeos tutoriais 📽 e guias 📜. Basta ir no Menu >> Dúvidas. "
+            "Caso necessite, chame nosso suporte 24 horas. @Pedrooo"
+        )
+        await update.message.reply_text(support_message, parse_mode="HTML")
+    else:
+        await update.message.reply_text(user_message, parse_mode="HTML")
 
 # Função de comando do Telegram para criar um usuário de teste com 1 dia de validade
 async def create_test_user_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
