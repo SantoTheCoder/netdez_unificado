@@ -20,11 +20,10 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "🌐 Internet Ilimitada com qualidade. Escolha uma opção abaixo para começar:"
     )
 
-    # Botões do menu principal organizados conforme a descrição
+    # Botões do menu principal organizados de forma mais estética
     keyboard = [
         [
             InlineKeyboardButton("🚀 Internet Ilimitada iOS & Android", callback_data='comprar_ios')
-            # Removed the "🍏 iOS Ilimitado" button as per the request
         ],
         [
             InlineKeyboardButton("💰 Seja um Revendedor", callback_data='revenda_menu'),
@@ -62,22 +61,44 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def comprar_ios_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logger.info("Exibindo o menu de Internet Ilimitada")
 
-    # Mensagem persuasiva
+    # Mensagem persuasiva com formatação aprimorada
     message = (
         "<b>🔍 Escolha o Melhor Plano para Você e Navegue Ilimitado:</b>\n"
         "Selecione um dos planos abaixo:"
     )
 
-    # Botões dos planos de usuários com variações de preço e duração
+    # Botões dos planos de usuários organizados em colunas para melhor visualização
     keyboard = [
-        [InlineKeyboardButton("👤 1 Usuário - 15 Dias - R$10,00", callback_data='usuario_1_15')],
-        [InlineKeyboardButton("👤 1 Usuário - 30 Dias - R$17,00", callback_data='usuario_1_30')],
-        [InlineKeyboardButton("👤 1 Usuário - 40 Dias - R$20,00", callback_data='usuario_1_40')],
-        [InlineKeyboardButton("👥 2 Usuários - 30 Dias - R$27,00", callback_data='usuario_2_30')],
-        [InlineKeyboardButton("👥 3 Usuários - 30 Dias - R$37,00", callback_data='usuario_3_30')],
-        [InlineKeyboardButton("👥 4 Usuários - 30 Dias - R$47,00", callback_data='usuario_4_30')],
-        [InlineKeyboardButton("💰 Seja um Revendedor", callback_data='revenda_menu')],
-        [InlineKeyboardButton("⬅️ Voltar ao Menu Principal", callback_data='start')]
+        [
+            InlineKeyboardButton("👤 1 Usuário - 15 Dias", callback_data='usuario_1_15'),
+            InlineKeyboardButton("R$10,00", callback_data='usuario_1_15')
+        ],
+        [
+            InlineKeyboardButton("👤 1 Usuário - 30 Dias", callback_data='usuario_1_30'),
+            InlineKeyboardButton("R$17,00", callback_data='usuario_1_30')
+        ],
+        [
+            InlineKeyboardButton("👤 1 Usuário - 40 Dias", callback_data='usuario_1_40'),
+            InlineKeyboardButton("R$20,00", callback_data='usuario_1_40')
+        ],
+        [
+            InlineKeyboardButton("👥 2 Usuários - 30 Dias", callback_data='usuario_2_30'),
+            InlineKeyboardButton("R$27,00", callback_data='usuario_2_30')
+        ],
+        [
+            InlineKeyboardButton("👥 3 Usuários - 30 Dias", callback_data='usuario_3_30'),
+            InlineKeyboardButton("R$37,00", callback_data='usuario_3_30')
+        ],
+        [
+            InlineKeyboardButton("👥 4 Usuários - 30 Dias", callback_data='usuario_4_30'),
+            InlineKeyboardButton("R$47,00", callback_data='usuario_4_30')
+        ],
+        [
+            InlineKeyboardButton("💰 Seja um Revendedor", callback_data='revenda_menu')
+        ],
+        [
+            InlineKeyboardButton("⬅️ Voltar ao Menu Principal", callback_data='start')
+        ]
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -92,22 +113,44 @@ async def comprar_ios_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def revenda_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logger.info("Exibindo o menu de revenda")
 
-    # Mensagem promocional
+    # Mensagem promocional com destaques
     message = (
         "<b>📈 Invista na Revenda e Aumente seus Lucros com NetDez:</b>\n"
         "Escolha um dos planos de revenda abaixo:"
     )
 
-    # Botões dos novos planos de revenda
+    # Botões dos planos de revenda organizados em duas colunas para clareza
     keyboard = [
-        [InlineKeyboardButton("💼 Revenda Start - 10 Clientes - R$30,00", callback_data='revenda_start')],
-        [InlineKeyboardButton("💼 Revenda Básica - 20 Clientes - R$52,50", callback_data='revenda_basica')],
-        [InlineKeyboardButton("💼 Revenda Intermediária - 50 Clientes - R$90,00", callback_data='revenda_intermediaria')],
-        [InlineKeyboardButton("💼 Revenda Avançada - 100 Clientes - R$135,00", callback_data='revenda_avancada')],
-        [InlineKeyboardButton("💼 Revenda Premium - 150 Clientes - R$180,00", callback_data='revenda_premium')],
-        [InlineKeyboardButton("💼 Revenda Elite - 200 Clientes - R$225,00", callback_data='revenda_elite')],
-        [InlineKeyboardButton("📦 Materiais de Venda", url='https://t.me/BANNERS_NET_ILIMITADA')],
-        [InlineKeyboardButton("⬅️ Voltar ao Menu Principal", callback_data='start')]
+        [
+            InlineKeyboardButton("💼 Revenda Start - 10 Clientes", callback_data='revenda_start'),
+            InlineKeyboardButton("R$30,00", callback_data='revenda_start')
+        ],
+        [
+            InlineKeyboardButton("💼 Revenda Básica - 20 Clientes", callback_data='revenda_basica'),
+            InlineKeyboardButton("R$52,50", callback_data='revenda_basica')
+        ],
+        [
+            InlineKeyboardButton("💼 Revenda Média - 50 Clientes", callback_data='revenda_intermediaria'),
+            InlineKeyboardButton("R$90,00", callback_data='revenda_intermediaria')
+        ],
+        [
+            InlineKeyboardButton("💼 Revenda Master - 100 Clientes", callback_data='revenda_avancada'),
+            InlineKeyboardButton("R$135,00", callback_data='revenda_avancada')
+        ],
+        [
+            InlineKeyboardButton("💼 Revenda Top - 150 Clientes", callback_data='revenda_premium'),
+            InlineKeyboardButton("R$180,00", callback_data='revenda_premium')
+        ],
+        [
+            InlineKeyboardButton("💼 Revenda Elite - 200 Clientes", callback_data='revenda_elite'),
+            InlineKeyboardButton("R$225,00", callback_data='revenda_elite')
+        ],
+        [
+            InlineKeyboardButton("📦 Materiais de Venda", url='https://t.me/BANNERS_NET_ILIMITADA')
+        ],
+        [
+            InlineKeyboardButton("⬅️ Voltar ao Menu Principal", callback_data='start')
+        ]
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -127,11 +170,15 @@ async def faq_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Por favor, selecione a plataforma para visualizar o FAQ correspondente:"
     )
 
-    # Botões para seleção de FAQ
+    # Botões para seleção de FAQ organizados de forma equilibrada
     keyboard = [
-        [InlineKeyboardButton("🤖 Android", callback_data='faq_android')],
-        [InlineKeyboardButton("🍏 iOS", callback_data='faq_ios')],
-        [InlineKeyboardButton("⬅️ Voltar ao Menu Principal", callback_data='start')]
+        [
+            InlineKeyboardButton("🤖 Android", callback_data='faq_android'),
+            InlineKeyboardButton("🍏 iOS", callback_data='faq_ios')
+        ],
+        [
+            InlineKeyboardButton("⬅️ Voltar ao Menu Principal", callback_data='start')
+        ]
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)

@@ -120,21 +120,21 @@ planos = {
         'validade_dias': 30
     },
     'revenda_intermediaria': {
-        'nome': 'Revenda Intermediária - 50 Pessoas',
+        'nome': 'Revenda Média - 50 Pessoas',
         'preco': 90.00,  # Atualizado de 120.00 para 90.00
         'tipo': 'revenda',
         'limite': 50,
         'validade_dias': 30
     },
     'revenda_avancada': {
-        'nome': 'Revenda Avançada - 100 Pessoas',
+        'nome': 'Revenda Master - 100 Pessoas',
         'preco': 135.00,  # Atualizado de 180.00 para 135.00
         'tipo': 'revenda',
         'limite': 100,
         'validade_dias': 30
     },
     'revenda_premium': {
-        'nome': 'Revenda Premium - 150 Pessoas',
+        'nome': 'Revenda Top - 150 Pessoas',
         'preco': 180.00,  # Atualizado de 240.00 para 180.00
         'tipo': 'revenda',
         'limite': 150,
