@@ -215,10 +215,10 @@ async def process_payment(update: Update, context: ContextTypes.DEFAULT_TYPE, di
             f"<b>💰 Total a Pagar:</b> R$ {preco_final:.2f}\n"
         )
 
-        if tipo == 'usuario':
+        if tipo == 'usuario': 
             mensagem_confirmacao = (
                 "<b>🛒 Complete sua Assinatura e Tenha Acesso Ilimitado!</b>\n\n"
-                "📱 <b>Compatível com Android</b>\n"
+                "📱 <b>Compatível com iOS e Android</b>\n"
                 f"📦 <b>Plano Selecionado:</b> {plano_info['nome']}\n"
                 "🌐 <b>Internet Ilimitada</b> com cobertura 🟣 VIVO, 🔵 TIM e 🔴 CLARO\n\n"
                 "<b>✨ Benefícios Exclusivos:</b>\n"
@@ -231,9 +231,10 @@ async def process_payment(update: Update, context: ContextTypes.DEFAULT_TYPE, di
                 f"{mensagem_preco}"
                 "⚠ <b>Clique em Confirmar para ativar seu acesso e gerar o PIX!</b>"
             )
-        elif tipo == 'revenda':
+        elif tipo == 'revenda': 
             mensagem_confirmacao = (
                 "<b>📦 Confirme Sua Assinatura e Comece a Revender Internet Ilimitada! 📦</b>\n\n"
+                "📱 <b>Compatível com iOS e Android</b>\n"
                 f"<b>🔹 Plano Selecionado:</b> {plano_info['nome']}\n"
                 "🌐 <b>Serviço:</b> Internet Ilimitada para seus clientes com cobertura 🟣 VIVO, 🔵 TIM e 🔴 CLARO\n\n"
                 "<b>✨ Benefícios Exclusivos para Revendedores:</b>\n"

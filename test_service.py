@@ -86,12 +86,13 @@ async def handle_test_request(update: Update, context: ContextTypes.DEFAULT_TYPE
 
     confirmation_message = (
         "🚀 <b>2 Horas de Internet Ilimitada – Grátis!</b>\n\n"
+        "📱 <b>Compatível com iOS e Android</b>\n\n"
         "<b>Ao confirmar, você recebe:</b>\n"
         "- 🌐 <b>Navegação 100% ilimitada</b> por 2 horas!\n"
         "- 📲 <b>App Exclusivo</b> com acesso rápido e fácil.\n"
         "- 🔒 <b>Usuário e Senha Seguros</b>, criados só para você.\n\n"
-        "<b>💬 Suporte 24h:</b> Estamos sempre à disposição! E você ainda recebe vídeos tutoriais para aproveitar ao máximo o teste.\n\n"
-        "<b>🎁 Bônus Especial: Indique e Ganhe!</b>\n"
+        "💬 <b>Suporte 24h:</b> Estamos sempre à disposição! E você ainda recebe vídeos tutoriais para aproveitar ao máximo o teste.\n\n"
+        "🎁 <b>Bônus Especial: Indique e Ganhe!</b>\n"
         "Indique um amigo e ganhe <b>+30 dias grátis</b>. Quanto mais indicações, mais dias gratuitos você acumula!\n\n"
         "👉 <b>Confirme abaixo para começar seu teste gratuito!</b>"
     )
