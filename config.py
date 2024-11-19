@@ -1,8 +1,8 @@
-# configG.py
+# config.py
 import os
 
 # Configurações e variáveis de ambiente
-API_KEY = os.getenv('TELEGRAM_API_KEY', '5889524682:AAHbpTe56tQbE5A5UHFXBDCdygHhWpttEf4')
+API_KEY = os.getenv('TELEGRAM_API_KEY', '7322700189:AAFSFWD5od2Gfg2Z-3tI8lVUlCiTp1CcaCo')
 IOS_API_KEY = os.getenv('IOS_API_KEY', '38mLyr38aEdGHFaGjfJJEiZHWs')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID', '-1002225678009')
 DEFAULT_VALIDITY_DAYS = 30
@@ -14,7 +14,7 @@ ACCESS_TOKEN = os.getenv('ACCESS_TOKEN', 'APP_USR-1062519597180352-070416-90b9d9
 CHAVE_PIX = os.getenv('CHAVE_PIX', '28d812de-5fe9-4864-a3b2-d684e1ac4fe5')
 
 # Nome e contato do bot
-BOT_NAME = os.getenv('BOT_NAME', '@netdez_bot')
+BOT_NAME = os.getenv('BOT_NAME', '@SOURCE_NET_BOT')
 SUPPORT_CONTACT = os.getenv('SUPPORT_CONTACT', '@Pedrooo')
 ADMIN_ID = os.getenv('ADMIN_ID', '5197753914')
 
@@ -31,7 +31,7 @@ PAYER_IDENTIFICATION_TYPE = os.getenv('PAYER_IDENTIFICATION_TYPE', 'CPF')
 PAYER_IDENTIFICATION_NUMBER = os.getenv('PAYER_IDENTIFICATION_NUMBER', '08005204833')
 
 # Configurações de Links de Aplicativos
-IOS_APP_LINK = os.getenv('IOS_APP_LINK', 'https://apps.apple.com/us/app/npv-tunnel/id1629465476')
+IOS_APP_LINK = os.getenv('IOS_APP_LINK', 'https://linktr.ee/netdez_oficial')
 CONFIG_FILES_LINK = os.getenv('CONFIG_FILES_LINK', 'https://t.me/+R72mmGw8JMdiZWEx')
 ANDROID_APP_LINK = os.getenv('ANDROID_APP_LINK', 'https://www.mediafire.com/file/hilzrl87bnr1arn/NET10+_+3.3+_+INTERNET+ILIMITADA.apk/file')
 
@@ -47,7 +47,7 @@ TELEGRAM_CONTROL_CHANNEL_ID = -1002364091260
 TELEGRAM_CHAT_USERNAME = "@TF81S8D165"
 
 # Configurações de Simulação de Vendas
-SIMULATE_SALES_AUTOMATICALLY = True
+SIMULATE_SALES_AUTOMATICALLY = False  # Define como False para desativar o sistema
 MIN_DAILY_SALES = 5  # Ajustado para refletir uma faixa de vendas um pouco mais alta
 MAX_DAILY_SALES = 12  # Para adicionar realismo em dias com mais movimento
 BASE_SALES_INTERVAL = 45  # Intervalo médio ajustado entre vendas para maior variabilidade
@@ -92,4 +92,4 @@ RESELLER_PLAN_PROBABILITIES = {
 }
 
 # config.py
-SIMULATE_SALES_AUTOMATICALLY = True  # Define como False para desativar o sistema
+SIMULATE_SALES_AUTOMATICALLY = False  # Define como False para desativar o sistema

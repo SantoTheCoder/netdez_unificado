@@ -8,7 +8,10 @@ import string
 from datetime import datetime, timedelta
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes, CallbackQueryHandler
-from config import CHANNEL_ID, CHANNEL_USERNAME, APP_MESSAGE_ID, URL_PAINEL_API, IOS_API_KEY, ANDROID_APP_LINK, RENEWAL_LINK
+from config import (
+    CHANNEL_ID, CHANNEL_USERNAME, APP_MESSAGE_ID, URL_PAINEL_API, 
+    IOS_API_KEY, ANDROID_APP_LINK, IOS_APP_LINK, RENEWAL_LINK
+)
 from users import create_user
 
 logger = logging.getLogger(__name__)
@@ -140,15 +143,23 @@ async def confirm_test_request(update: Update, context: ContextTypes.DEFAULT_TYP
                 await update.callback_query.message.delete()
 
                 user_message = (
-                    f"🎉 <b>Usuário Criado com Sucesso!</b> 🎉\n\n"
-                    f"🔎 <b>Usuário:</b> <code>{username}</code>\n"
-                    f"🔑 <b>Senha:</b> <code>{password}</code>\n\n"
-                    "🎯 <b>Validade:</b> 2 horas a partir da ativação.\n"
-                    "🕟 <b>Limite de Conexões:</b> 1\n\n"
-                    "📱 <b>Aplicativos e Arquivos de Configuração:</b>\n\n"
-                    f"- Para Android: <a href='{ANDROID_APP_LINK}'>Baixe o Aplicativo Aqui</a>\n\n"
-                    f"🌍 <b>Link de Renovação:</b> <a href='{RENEWAL_LINK}'>Clique Aqui</a>\n"
+                    "<b>🎉 Usuário Criado com Sucesso! 🎉</b>\n\n"
+                    "<b>🔎 Usuário:</b> <code>{USERNAME}</code>\n"
+                    "<b>🔑 Senha:</b> <code>{PASSWORD}</code>\n"
+                    "<b>🎯 Validade:</b> <code>2 horas a partir da ativação</code>\n"
+                    "<b>🕟 Limite de Conexões:</b> <code>1</code>\n\n"
+                    "<i>Você pode copiar o usuário ou a senha clicando em cima deles.</i>\n\n"
+                    "<b>📱 Aplicativos e Arquivos de Configuração:</b>\n\n"
+                    "- <b>Para Android:</b> <a href=\"{ANDROID_APP_LINK}\">Baixe o Aplicativo Aqui</a>\n"
+                    "- <b>Para iOS:</b> <a href=\"{IOS_APP_LINK}\">Baixe o Aplicativo Aqui</a>\n\n"
+                    "🌍 <a href=\"{RENEWAL_LINK}\">Link de Renovação (Clique Aqui)</a>\n"
                     "Use este link para realizar suas renovações futuras."
+                ).format(
+                    USERNAME=username,
+                    PASSWORD=password,
+                    ANDROID_APP_LINK=ANDROID_APP_LINK,
+                    IOS_APP_LINK=IOS_APP_LINK,
+                    RENEWAL_LINK=RENEWAL_LINK
                 )
 
                 await update.callback_query.message.reply_text(
@@ -166,7 +177,7 @@ async def confirm_test_request(update: Update, context: ContextTypes.DEFAULT_TYP
                 support_message = (
                     "❓ <b>Ajuda Rápida:</b>\n\n"
                     "Nosso bot envia vídeos tutoriais 📽 e guias 📜. "
-                    "Basta ir no Menu >> Dúvidas. Caso necessite , chame nosso suporte 24 horas. @kriasys_autorizado"
+                    "Basta ir no Menu >> Dúvidas. Caso necessite, chame nosso suporte 24 horas. @kriasys_autorizado"
                 )
                 await update.callback_query.message.reply_text(
                     support_message, parse_mode="HTML"

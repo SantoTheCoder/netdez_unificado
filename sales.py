@@ -1,8 +1,11 @@
-#SALES.PY
+# sales.py
 import logging
 from datetime import datetime, timedelta
 from utils import make_request, generate_random_string
-from config import IOS_API_KEY, IOS_APP_LINK, CONFIG_FILES_LINK, ANDROID_APP_LINK, RENEWAL_LINK
+from config import (
+    IOS_API_KEY, IOS_APP_LINK, CONFIG_FILES_LINK, 
+    ANDROID_APP_LINK, RENEWAL_LINK
+)
 
 logger = logging.getLogger(__name__)
 
@@ -37,15 +40,23 @@ def create_user_for_sale(user_limit, validity_days, admincid=1):
     if 'error' not in result:
         user_message = (
             "<b>🎉 Usuário Criado com Sucesso! 🎉</b>\n\n"
-            f"<b>🔎 Usuário:</b>\n<code>{username}</code>\n\n"
-            f"<b>🔑 Senha:</b>\n<code>{password}</code>\n\n"
-            f"<b>🎯 Validade:</b>\n<code>{validity_date}</code>\n\n"
-            f"<b>🕟 Limite de Conexões:</b>\n<code>{user_limit}</code>\n\n"
+            "<b>🔎 Usuário:</b> <code>{USERNAME}</code>\n"
+            "<b>🔑 Senha:</b> <code>{PASSWORD}</code>\n"
+            "<b>🎯 Validade:</b> <code>{VALIDITY_DATE}</code>\n"
+            "<b>🕟 Limite de Conexões:</b> <code>{USER_LIMIT}</code>\n\n"
             "<b>📱 Aplicativos e Arquivos de Configuração:</b>\n\n"
-            f"- <b>Para Android:</b>\n"
-            f"  - <a href=\"{ANDROID_APP_LINK}\">Baixe o Aplicativo Aqui</a>\n\n"
-            f"🌍 <a href=\"{RENEWAL_LINK}\">Link de Renovação (Clique Aqui)</a>\n"
+            "- <b>Para Android:</b> <a href=\"{ANDROID_APP_LINK}\">Baixe o Aplicativo Aqui</a>\n"
+            "- <b>Para iOS:</b> <a href=\"{IOS_APP_LINK}\">Baixe o Aplicativo Aqui</a>\n\n"
+            "🌍 <a href=\"{RENEWAL_LINK}\">Link de Renovação (Clique Aqui)</a>\n"
             "Use este link para realizar suas renovações futuras."
+        ).format(
+            USERNAME=username,
+            PASSWORD=password,
+            VALIDITY_DATE=validity_date,
+            USER_LIMIT=user_limit,
+            ANDROID_APP_LINK=ANDROID_APP_LINK,
+            IOS_APP_LINK=IOS_APP_LINK,
+            RENEWAL_LINK=RENEWAL_LINK
         )
         logger.info(f"Usuário {username} criado com sucesso.")
         return username, user_message
