@@ -21,7 +21,8 @@ from payment_handlers import setup_payment_handlers
 import test_service  # Importando o módulo de teste gratuito
 from test_service import setup_test_service_handlers  # Importando o setup para handlers de teste
 from price_adjustment import price_adjustment_command  # Importa a função de comando de ajuste de preço correta
-from faq import faq_start, setup_faq_handlers  # Importando o FAQ para o botão no menu principal e setup de handlers
+from faq_android import setup_faq_android_handlers  # Importando handlers do FAQ Android
+from faq_ios import setup_faq_ios_handlers  # Importando handlers do FAQ iOS
 from sale_notification import setup_admin_handlers, start_simulation_task  # Importa o setup para o comando de simulação de venda
 
 # Configuração de Logging
@@ -127,8 +128,9 @@ def main():
     # Configurando os handlers para confirmação do teste gratuito
     setup_test_service_handlers(application)
 
-    # Configurando o FAQ handlers
-    setup_faq_handlers(application)  # Configura os handlers de FAQ incluindo botão do menu e navegação
+    # Configurando os handlers do FAQ Android e iOS
+    setup_faq_android_handlers(application)
+    setup_faq_ios_handlers(application)
 
     # Handlers para botões inline (callback queries) específicos
     application.add_handler(CallbackQueryHandler(revenda_menu, pattern='^revenda_menu$'))
@@ -165,7 +167,7 @@ def main():
 
     # Agendar o reset_bot para executar 30 segundos após o início e depois a cada intervalo definido
     FIRST_RESET_DELAY_SECONDS = 30  # Tempo após o início para o primeiro reset
-    RESET_INTERVAL_SECONDS = 86400  # Intervalo entre resets em segundos (1 hora)
+    RESET_INTERVAL_SECONDS = 86400  # Intervalo entre resets em segundos (24 horas)
 
     scheduler.add_job(
         reset_bot,

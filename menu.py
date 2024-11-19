@@ -1,10 +1,12 @@
-# MENU.PY
+# menu.py
 import logging
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes
 from payment_handlers import process_payment, confirm_payment
 from affiliate_system import affiliate_dashboard
 import test_service
+from faq_android import faq_android_start
+from faq_ios import faq_ios_start
 
 logger = logging.getLogger(__name__)
 
@@ -36,7 +38,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
             InlineKeyboardButton("🔥 Turbine suas Redes Sociais", url='https://t.me/crescimentosocial_bot')
         ],
         [
-            InlineKeyboardButton("❓ FAQ / Dúvidas Frequentes", callback_data='faq')
+            InlineKeyboardButton("❓ FAQ / Dúvidas Frequentes", callback_data='faq_menu')
         ]
     ]
 
@@ -116,6 +118,38 @@ async def revenda_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parse_mode="HTML"
     )
 
+# Função para exibir o menu de FAQ
+async def faq_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    logger.info("Exibindo o menu de FAQ")
+
+    message = (
+        "<b>❓ Dúvidas Frequentes</b>\n\n"
+        "Por favor, selecione a plataforma para visualizar o FAQ correspondente:"
+    )
+
+    # Botões para seleção de FAQ
+    keyboard = [
+        [InlineKeyboardButton("🤖 Android", callback_data='faq_android')],
+        [InlineKeyboardButton("🍏 iOS", callback_data='faq_ios')],
+        [InlineKeyboardButton("⬅️ Voltar ao Menu Principal", callback_data='start')]
+    ]
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    # Envia a mensagem com as opções
+    if update.callback_query:
+        await update.callback_query.message.edit_text(
+            message,
+            reply_markup=reply_markup,
+            parse_mode="HTML"
+        )
+    else:
+        await update.message.reply_text(
+            message,
+            reply_markup=reply_markup,
+            parse_mode="HTML"
+        )
+
 # Função para lidar com os botões pressionados
 async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -151,7 +185,14 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif query.data == 'teste_gratis':
         logger.debug("Lidando com solicitação de teste grátis")
         await test_service.handle_test_request(update, context)
-    elif query.data == 'faq':
-        logger.debug("Acessando FAQ")
-        from faq import faq_start
-        await faq_start(update, context)
+    elif query.data == 'faq_menu':
+        logger.debug("Acessando sub-menu de FAQ")
+        await faq_menu(update, context)
+    elif query.data == 'faq_android':
+        logger.debug("Acessando FAQ Android")
+        await faq_android_start(update, context)
+    elif query.data == 'faq_ios':
+        logger.debug("Acessando FAQ iOS")
+        await faq_ios_start(update, context)
+    else:
+        logger.warning(f"Dados de callback desconhecidos: {query.data}")
