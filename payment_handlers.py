@@ -100,7 +100,7 @@ planos = {
     },
     'usuario_1_40': {
         'nome': 'Plano 1 Pessoa - 40 Dias',
-        'preco': 40.00,
+        'preco': 20.00,
         'tipo': 'usuario',
         'usuarios_entregues': 1,
         'validade_dias': 40
